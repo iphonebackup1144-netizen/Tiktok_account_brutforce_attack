@@ -1,1 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BruteForce Tool -</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+  <div class="container">
+    <div id="loading-screen">
+      <h1>Initializing BruteForce Engine...</h1>
+      <div class="loader"></div>
+    </div>
 
+    <div id="main-app" style="display:none;">
+      <h1>💀  BRUTEFORCE PANEL 💀</h1>
+      <p class="warning">⚠️ This is a TikTok tool made for Hack/</p>
+      <label for="username">🎯 Enter TikTok Username:</label><br>
+      <input type="text" id="username" placeholder="e.g. hles_educational_system" />
+      <button onclick="startBruteforce()">Start BruteForce Attack</button>
+      <pre id="output"></pre>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
