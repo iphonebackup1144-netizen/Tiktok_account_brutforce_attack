@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BruteForce Tool -</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BruteForce Attack Simulation - </title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <canvas id="matrix"></canvas>
-  <div class="container">
-    <div id="loading-screen">
-      <h1>Initializing BruteForce Engine...</h1>
-      <div class="loader"></div>
-    </div>
 
-    <div id="main-app" style="display:none;">
-      <h1>💀  BRUTEFORCE PANEL 💀</h1>
-      <p class="warning">⚠️ This is a TikTok tool made for Hack/</p>
-      <label for="username">🎯 Enter TikTok Username:</label><br>
-      <input type="text" id="username" placeholder="e.g. hles_educational_system" />
-      <button onclick="startBruteforce()">Start BruteForce Attack</button>
-      <pre id="output"></pre>
-    </div>
+  <div id="loading-screen">
+    <h1>Initializing BruteForce Engine...</h1>
+    <p>Launching hacking sequence... Please wait </p>
+    <div class="loader"></div>
   </div>
+
+  <div id="main-app">
+    <h1> BruteForce Attack Simulator</h1>
+    <input type="text" id="username" placeholder="Enter any TikTok username" />
+    <button onclick="startAttack()">Start BruteForce Attack</button>
+    <pre id="output"></pre>
+    <p class="disclaimer">⚠️ This is a  simulation Hack purposes only</p>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
