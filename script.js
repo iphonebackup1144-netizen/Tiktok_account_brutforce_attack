@@ -1,13 +1,8 @@
 const passwords = [
-  "123456", "123456789", "password", "12345678", "12345", "qwerty", "abc123", "111111", "123123", "welcome",
-  "letmein", "football", "iloveyou", "admin", "monkey", "login", "princess", "solo", "qwerty123", "1q2w3e4r",
-  "ayan1","ayan12","ayan123","ayan1234","ayan12345","ayan@","ayan1@","ayan12@","ayan123@","ayan1234@","ayan12345@",
-  "sahid1","sahid12","sahid123","sahid1234","sahid12345","sahid@","sahid1@","sahid12@","sahid123@","sahid1234@","sahid12345@",
-  "Shahid1","Shahid12","Shahid123","Shahid1234","Shahid12345","Shahid@","Shahid1@","Shahid12@","Shahid123@","Shahid1234@","Shahid12345@",
-  "Malik1","Malik12","Malik123","Malik1234","Malik12345","Malik@","Malik1@","Malik12@","Malik123@","Malik1234@","Malik12345@",
-  "Ali1","Ali12","Ali123","Ali1234","Ali12345","Ali@","Ali1@","Ali12@","Ali123@","Ali1234@","Ali12345@",
-  "Danish1","Danish12","Danish123","Danish1234","Danish12345","Danish@","Danish1@","Danish12@","Danish123@","Danish1234@","Danish12345@",
-  "haris12345@"
+  "123456", "password", "123456789", "12345678", "12345", "qwerty", "111111",
+  "admin", "letmein", "football", "iloveyou", "123123", "welcome",
+  "ayan123", "sahid@123", "malik123", "ali12@", "danish123@",
+  "haris123@"
 ];
 
 function matrixRain() {
@@ -38,31 +33,31 @@ function matrixRain() {
     }
   }
 
-  setInterval(draw, 35);
+  setInterval(draw, 33);
 }
 
 function startAttack() {
   const user = document.getElementById("username").value.trim();
   const output = document.getElementById("output");
-  output.innerText = "Starting brute force attack on " + user + "...\\n";
+  output.innerText = `🔍 Starting brute force attack on ${user}...\n\n`;
 
   let index = 0;
   function tryNext() {
     if (index >= passwords.length) {
-      output.innerText += "\\nNo password found. Attack failed.";
+      output.innerText += "\n❌ No password matched. Attack failed.\n";
       return;
     }
 
     const pwd = passwords[index];
-    output.innerText += "Trying password: " + pwd + " ...\\n";
+    output.innerText += `🔄 Trying password: ${pwd}\n⏳ Next password in 10 seconds...\n\n`;
 
-    if (user === "hles_educational_system" && pwd === "haris12345@") {
-      output.innerText += "\\n✅ Password found: " + pwd + "\\nAccount hacked successfully (FAKE)";
+    if (user === "hles_educational_system" && pwd === "haris123@") {
+      output.innerText += `\n✅ Password found: ${pwd}\n💥 Account hacked successfully! (FAKE)\n`;
       return;
     }
 
     index++;
-    setTimeout(tryNext, 10000); // 10 seconds delay
+    setTimeout(tryNext, 10000);
   }
 
   tryNext();
