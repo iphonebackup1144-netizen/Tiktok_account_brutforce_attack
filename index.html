@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Initializing Hack Console...</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connecting to TikTok...</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="loading-screen">
-    <pre class="console-log" id="initial-log"></pre>
+    <pre class="console-text">[+] Initiating Brute Force Attack...
+[+] Scanning IP: 182.176.145.23 (Rawalpindi)
+[+] Establishing secure connection to TikTok firewall...
+[+] Bypassing 256-bit encryption...
+[+] Please wait... This may take up to 2 minutes...</pre>
   </div>
 
-  <div class="container" id="main-interface" style="display: none;">
-    <h1>🎯 TikTok Bruteforce Panel</h1>
-    <input type="text" id="username" placeholder="Enter any TikTok account username">
-    <button onclick="startAttack()">Start Bruteforce Attack</button>
-    <div id="status"></div>
-    <pre id="console"></pre>
+  <div id="main" style="display: none;">
+    <h1>⚠️ TikTok Account Hack Simulator</h1>
+    <input type="text" id="username" placeholder="Enter any TikTok username" />
+    <button onclick="startHack()">Start Brute Force</button>
+    <div id="output" class="console-text"></div>
+    <div id="leak" class="hidden">
+      <h2>📦  TikTok Data Leak</h2>
+      <p><strong>Username:</strong> hles_educational_system</p>
+      <p><strong>Followers:</strong> 74</p>
+      <p><strong>Following:</strong> 248</p>
+      <p><strong>Likes:</strong> 61</p>
+      <p><strong>Email linked:</strong> rajaharisptf@gmail.com</p>
+    </div>
   </div>
 
+  <audio id="type-sound" src="https://assets.mixkit.co/active_storage/sfx/2507/2507-preview.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
 </html>
