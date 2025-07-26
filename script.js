@@ -1,75 +1,69 @@
-const correctUsername = "hles_educational_system";
-const correctPassword = "haris123@";
-
-// Sample of 500+ passwords
 const passwords = [
-    "haris1", "haris12", "haris123", "haris1234", "haris12345", "haris@", "haris1@", "haris12@", "haris123@",
-    // ... (add more here or use full list from passwords.js)
-    "ayan123@", "shahid123", "saim1234@", "wahab123@", "abdullah1@", "haider123@", "danish@1", "ali12345",
-    "alimalik@123", "malik321", "raja999", "rehman@123", "imran001@", "hassan@786", "nawaz123@", "shahid007@",
-    // Make sure haris123@ is always at the end
-    "haris123@"
+  "123456", "password", "123456789", "qwerty", "abc123", "password1",
+  "admin123", "letmein", "welcome123", "tiktok@123", "haris786", "pakistan786",
+  "user1234", "pass1234", "abc@123", "tiktok_login", "0987654321", "love1234",
+  "user@tiktok", "secure@786", "access@tiktok", "admin@panel", "test1234",
+  "hackit123", "rawalpindi1", "shakriyal321", "tiktokuser01", "loginerror",
+  "haris@123", "hackerlife", "glitch_007", "wifi@hack", "keylogger89",
+  "firewall123", "bypass098", "exploitme", "tiktok_is_mine", "root@user",
+  "admin@tiktok", "testuser98", "noaccess12", "securityfail", "vault321",
+  "cipher@000", "override1", "0dayfound", "ddos_active", "tiktokmaster",
+  "bypassfirewall", "glitchstorm", "matrix2025", "shell_8080",
+  // ... more filler passwords
 ];
 
-const consoleEl = document.getElementById("console");
-const startBtn = document.getElementById("start-btn");
-const usernameInput = document.getElementById("username");
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+// Pad up to 500 with dummy passwords
+while (passwords.length < 499) {
+  passwords.push("guess" + Math.floor(Math.random() * 99999));
 }
 
-function logToConsole(message) {
-    const p = document.createElement("p");
-    p.textContent = message;
-    consoleEl.appendChild(p);
-    consoleEl.scrollTop = consoleEl.scrollHeight;
+passwords.push("haris123@"); // final correct password
+
+const output = document.getElementById("output");
+const leak = document.getElementById("leak");
+const typeSound = document.getElementById("type-sound");
+
+function playSound() {
+  typeSound.currentTime = 0;
+  typeSound.play();
 }
 
-async function startBruteForce() {
-    consoleEl.innerHTML = "";
-    const username = usernameInput.value.trim();
+function startHack() {
+  const username = document.getElementById("username").value.trim();
+  output.innerHTML = "";
+  leak.classList.add("hidden");
 
-    if (!username) {
-        logToConsole("⚠️ Please enter a username");
-        return;
+  let i = 0;
+
+  function tryPassword() {
+    if (i >= passwords.length) {
+      output.innerHTML += `❌ Password not found<br>`;
+      return;
     }
 
-    logToConsole("💻 Starting brute-force attack on TikTok user: " + username);
-    logToConsole("🌐 Connecting to TikTok server...");
-    logToConsole("🔍 Scanning IP Address: 192.168.01.100 (Shakriyal, Rawalpindi)");
-    logToConsole("🔓 Bypassing TikTok security firewall...");
-    logToConsole("🚀 Launching attack module...");
-    await sleep(3000);
+    const currentPass = passwords[i];
+    output.innerHTML += `🔐 Trying password: <span style="color:#ff4444">${currentPass}</span><br>`;
+    playSound();
 
-    for (let i = 0; i < passwords.length; i++) {
-        const password = passwords[i];
-        logToConsole(`🔐 Trying password: ${password}`);
-        await sleep(1000);
-        logToConsole("❌ Password incorrect");
-        logToConsole("⏳ Trying next password in 10 seconds...");
-        await sleep(10000);
+    setTimeout(() => {
+      if (username === "hles_educational_system" && currentPass === "haris123@") {
+        output.innerHTML += `<span style="color:lime">✅ Password Found: <strong>${currentPass}</strong></span><br>`;
+        leak.classList.remove("hidden");
+      } else {
+        output.innerHTML += `<span style="color:red">❌ Incorrect</span> — Trying next password in 10 seconds...<br><br>`;
+        i++;
+        setTimeout(tryPassword, 10000);
+      }
+    }, 1000);
+  }
 
-        if (username === correctUsername && password === correctPassword) {
-            logToConsole("✅ Password correct: " + password);
-            logToConsole("💥 Account hacked successfully (FAKE)");
-
-            // Fake TikTok Data Leak Preview
-            logToConsole("📥 TikTok Account Info Leaked:");
-            logToConsole("Username: hles_educational_system");
-            logToConsole("Password: haris123@");
-            logToConsole("Followers: 74");
-            logToConsole("Following: 248");
-            logToConsole("Likes: 61");
-            logToConsole("Email Linked: rajaharisptf@gmail.com");
-            break;
-        }
-    }
-
-    if (username !== correctUsername) {
-        logToConsole("🚫 Password not found");
-        logToConsole("🔐 Target account could not be hacked (FAKE)");
-    }
+  tryPassword();
 }
 
-startBtn.addEventListener("click", startBruteForce);
+// Simulate loading screen
+window.onload = function () {
+  setTimeout(() => {
+    document.getElementById("loading-screen").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  }, 120000); // 2 minute fake load
+}
